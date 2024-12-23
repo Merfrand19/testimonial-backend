@@ -17,4 +17,27 @@ export class TestimonialController {
             return res.status(500).json({error: err})
         }
     }
+
+    getAll = async (req: Request, res: Response): Promise<Response> => {
+        try{
+            const allTestimonial = await testimonialService.getAll();
+            return res.status(200).json(allTestimonial);
+        }
+        catch(err){
+            console.log(err)
+            return res.status(500).json({error: err})
+        }
+    }
+
+    getFirst = async (req: Request, res: Response): Promise<Response> => {
+        try{
+            const allTestimonial = await testimonialService.getAll();
+            const firstTestimonial = allTestimonial[0];
+            return res.status(200).json(firstTestimonial);
+        }
+        catch(err){
+            console.log(err)
+            return res.status(500).json({error: err})
+        }
+    }
 } 
